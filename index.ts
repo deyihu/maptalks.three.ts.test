@@ -33,6 +33,7 @@ threeLayer.prepareToDraw = function (gl, scene, camera) {
     light.position.set(0, -10, 10).normalize();
     scene.add(light);
     scene.add(new THREE.AmbientLight(0xffffff, 0.2));
+    animation();
     // addBars(scene);
     addBar();
 
@@ -52,7 +53,7 @@ function addBar() {
     ];
     const material = new THREE.MeshPhongMaterial({ color: 'red' });
     const bars = lnglats.map(lnglat => {
-        return threeLayer.toBox(lnglat, { height: 30000 * (1 + Math.random()), radius: 2000, topColor: '#fff' }, material);
+        return threeLayer.toBox(lnglat, { height: 30000 * (1 + Math.random()), radius: 2000, topColor: '#fff', interactive: false }, material);
     });
     threeLayer.addMesh(bars);
     addExturdePolygons();
@@ -64,7 +65,17 @@ function addExturdePolygons() {
         geojson.features.forEach(f => {
             f.properties.height = 3000;
         });
-        const extrudePolygon = threeLayer.toExtrudePolygons(geojson.features, { topColor: '#fff', asynchronous: false }, material);
+        const extrudePolygon = threeLayer.toExtrudePolygons(geojson.features, { topColor: '#fff', interactive: false, asynchronous: true }, material);
         threeLayer.addMesh([extrudePolygon]);
     })
+}
+
+function animation() {
+
+    // layer animation support Skipping frames
+    threeLayer._needsUpdate = !threeLayer._needsUpdate;
+    if (threeLayer._needsUpdate && !threeLayer.isRendering()) {
+        threeLayer.renderScene();
+    }
+    requestAnimationFrame(animation);
 }
