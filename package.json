@@ -1,0 +1,31 @@
+{
+  "name": "maptalks.three.ts.test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deyihu/maptalks.three.ts.test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deyihu/maptalks.three.ts.test/issues"
+  },
+  "homepage": "https://github.com/deyihu/maptalks.three.ts.test#readme",
+  "dependencies": {
+    "maptalks": "^1.0.0-alpha.14",
+    "maptalks.three.ts": "^0.13.7",
+    "three": "^0.125.2"
+  },
+  "devDependencies": {
+    "ts-loader": "^8.0.17",
+    "typescript": "^4.1.5",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}
