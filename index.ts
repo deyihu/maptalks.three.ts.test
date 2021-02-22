@@ -1,6 +1,6 @@
 import * as maptalks from 'maptalks';
 import * as THREE from 'three';
-import { ThreeLayer } from 'maptalks.three.ts';
+import { ThreeLayer } from 'maptalks.three';
 
 const map = (window as any).map = new maptalks.Map('map', {
     "center": [116.25931432100106, 39.82335790594166], "zoom": 9.794164345308731, "pitch": 60, "bearing": 0,
